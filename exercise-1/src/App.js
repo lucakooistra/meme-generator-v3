@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-
 function App() {
+  const thingsArray = ["Thing 1", "Thing 2"]
+
+  function addToArray() {
+    const newThingText = `Thing ${thingsArray.length + 1}`
+    thingsArray.push(newThingText)
+    console.log(thingsArray)
+  }
+
+  const renderElement = thingsArray.map(thing => {
+    return(
+      <p key={thing}>{thing}</p>
+    )
+  })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <div>
+          <button onClick={addToArray}>Add Item</button>
+          {renderElement}
+      </div>
+  )
 }
 
 export default App;
