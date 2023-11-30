@@ -1,9 +1,10 @@
 import Greeting from "./Greeting"
+import UseNewState from "./UseNewState"
 
 function App() {
   return (
    <>
-   <Greeting />
+   <UseNewState />
    </>
   );
 }
