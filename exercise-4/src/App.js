@@ -2,23 +2,23 @@ import React from "react"
 
 function App() {
     /**
-     * Challenge: Replace the if/else below with a ternary
-     * to determine the text that should display on the page
+     * Challenge: 
+     * - Initialize state for `isGoingOut` as a boolean
+     * - Make it so clicking the div.state--value flips that
+     *   boolean value (true -> false, false -> true)
+     * - Display "Yes" if `isGoingOut` is `true`, "No" otherwise
      */
-    const isGoingOut = true
-    
-    let answer  // Use ternary here
-    if(isGoingOut === true) {
-        answer = "Yes"
-    } else {
-        answer = "No"
+    const [isGoingOut, setIsGoingOut] = React.useState(true)
+
+    function flipState(){
+      setIsGoingOut(prevState => !prevState)
     }
-    
+
     return (
         <div className="state">
             <h1 className="state--title">Do I feel like going out tonight?</h1>
-            <div className="state--value">
-                <h1>{answer}</h1>
+            <div className="state--value" onClick={flipState}>
+                <h1>{isGoingOut ? "Yes" : "No"}</h1>
             </div>
         </div>
     )
