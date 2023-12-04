@@ -1,4 +1,5 @@
 import React from 'react'
+import Star from './components/Star'
 
 function App() {
   const [contact, setContact] = React.useState({
@@ -6,10 +7,9 @@ function App() {
     lastName: "Doe",
     phone: "+1 (719) 555-1211",
     email: "itsmyrealname@example.com",
-    isFavorite: false
+    isFavorite: true
 })
 
-  let starIcon = contact.isFavorite ? "star-filled.png" : "star-empty.png" 
 
 function toggleFavorite() {
   setContact(prevSetContact => {
@@ -25,11 +25,9 @@ return (
         <article className="card">
             <img src="./images/user.png" className="card--image" alt=""/>
             <div className="card--info">
-                <img 
-                    src={`../images/${starIcon}`} 
-                    className="card--favorite"
-                    onClick={toggleFavorite}
-                    alt=""
+                <Star 
+                isFilled = {contact.isFavorite}
+                handleClick = {toggleFavorite}
                 />
                 <h2 className="card--name">
                     {contact.firstName} {contact.lastName}
