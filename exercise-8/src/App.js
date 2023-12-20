@@ -2,15 +2,18 @@ import React from 'react'
 import boxes from "./boxes"
 
 function App() {
-  const [squares, setSquares] = React.useState(boxes)
-    
-  const squareElements = squares.map(square => (
-      <div className="box" key={square.id}></div>
-  ))
+
+    const [squares, setSquares] = React.useState(boxes)
+
+    const emptySquare = squares.map(square => {
+      return (
+        <div className='box' key={square.key}></div>
+      )
+    })
   return (
-      <main>
-          {squareElements}
-      </main>
+    <main>
+      {emptySquare}
+    </main>
   )
 }
 
