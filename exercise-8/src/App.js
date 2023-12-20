@@ -1,18 +1,24 @@
 import React from 'react'
 import boxes from "./boxes"
 
-function App() {
+function App(props) {
 
     const [squares, setSquares] = React.useState(boxes)
+    
+    const styles = {
+      backgroundColor:  props.darkMode ? "#222222" : "#cccccc"
+    }
 
-    const emptySquare = squares.map(square => {
+    console.log(styles)
+
+    const squareElements = squares.map(square => {
       return (
-        <div className='box' key={square.key}></div>
+        <div style={styles} className="box" key={square.id}></div>
       )
     })
   return (
     <main>
-      {emptySquare}
+      {squareElements}
     </main>
   )
 }
