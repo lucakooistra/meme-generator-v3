@@ -4,17 +4,18 @@ import Box from "./components/Box"
 
 function App(props) {
 
-  function toggle() {
-    console.log("Clicked!")
+  function toggle(id) {
+    console.log(id)
   }
 
     const [squares, setSquares] = React.useState(boxes)
     
     const squareElements = squares.map(square => (
         <Box
-          handleClick={toggle} 
           key={square.id}
+          id={square.id}
           on={square.on}
+          handleClick={toggle} 
         />
       ))
       
