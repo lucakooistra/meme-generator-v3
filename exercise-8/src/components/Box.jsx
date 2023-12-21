@@ -5,8 +5,11 @@ export default function Box(props) {
     backgroundColor: props.on ? "#222222" : "transparent",
   };
 
-  return <div 
+  return (
+  <button 
   style={styles} 
   className="box" 
-  onClick={props.handleClick}></div>;
+  onClick={props.handleClick}>
+  </button>
+  )
 }
