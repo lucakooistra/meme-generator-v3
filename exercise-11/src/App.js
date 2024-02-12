@@ -1,44 +1,102 @@
 import React from "react";
 
 function App() {
-  const [formData, setFormData] = React.useState(
-    {firstName: "", lastName: "", email: ""}
-    )
-  
-    console.log(formData)
-  
-  function handleChange(event){
-    setFormData(prevFormData => {
+  const [formData, setFormData] = React.useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    comments: "",
+    isFriendly: true,
+    employment: "",
+  });
+
+  console.log(formData.employment)
+  function handleChange(event) {
+    const { name, value, type, checked } = event.target;
+    setFormData((prevFormData) => {
       return {
         ...prevFormData,
-        [event.target.name]: event.target.value
-      }
-    })
+        [name]: type === "checkbox" ? checked : value,
+      };
+    });
   }
 
   return (
     <form>
-      <input 
-        type="text" 
+      <input
+        type="text"
         placeholder="First Name"
         onChange={handleChange}
         name="firstName"
         value={formData.firstName}
       />
-      <input 
-        type="text" 
+      <input
+        type="text"
         placeholder="Last Name"
         onChange={handleChange}
         name="lastName"
         value={formData.lastName}
       />
-      <input 
-        type="email" 
+      <input
+        type="email"
         placeholder="email"
         onChange={handleChange}
         name="email"
         value={formData.email}
       />
+      <textarea
+        placeholder="comments"
+        name="comments"
+        onChange={handleChange}
+        value={formData.comments}
+      />
+      <input
+        type="checkbox"
+        id="isFriendly"
+        checked={formData.isFriendly}
+        onChange={handleChange}
+        name="isFriendly"
+      />
+      <label htmlFor="isFriendly">Are you friendly?</label>
+      <br />
+      <br />
+
+      <fieldset>
+        <legend>Current employment status</legend>
+
+        <input 
+          type="radio" 
+          id="unemployed"
+          name="employment"
+          value="unemployed"
+          checked={formData.employment === "unemployed"}
+          onChange={handleChange} 
+         />
+        <label htmlFor="unemployed">Unemployed</label>
+        <br />
+
+        <input 
+          type="radio" 
+          id="part-time" 
+          name="employment"
+          value="part-time"
+          checked={formData.employment === "part-time"}
+          onChange={handleChange} 
+        />
+        <label htmlFor="part-time">Part-time</label>
+        <br />
+
+        <input 
+          type="radio" 
+          id="full-time" 
+          name="employment"
+          value="full-time"
+          checked={formData.employment === "full-time"}
+          onChange={handleChange} 
+        />
+        <label htmlFor="full-time">Full-time</label>
+        <br />
+      </fieldset>
     </form>
   );
 }
