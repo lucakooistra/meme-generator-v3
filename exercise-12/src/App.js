@@ -19,7 +19,7 @@ function App() {
      *    up for our newsletter!" to the console.
      */
 
-    const id = useId
+    const id = useId()
 
     const [formData, setFormData] = React.useState({
         email: "",
@@ -40,8 +40,15 @@ function App() {
     
     function handleSubmit(event) {
       event.preventDefault()
-        formData.password === formData.confirmPassword ? console.log("Succesfully signed up") : console.log("Passwords do not match");
-        formData.okayToEmail && console.log("Thankyou for signing up for our newsletter"); 
+      if (formData === formData.confirmPassword) {
+        console.log("Succesfully signed up");
+    } else {
+        console.log("Passwords do not match")
+        return
+      };
+
+      formData.okayToEmail && console.log("Thankyou for signing up for our newsletter");
+
   }
   
   return (
